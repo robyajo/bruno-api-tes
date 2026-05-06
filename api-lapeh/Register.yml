@@ -15,6 +15,9 @@ http:
       - name: email
         type: text
         value: ""
+      - name: password
+        type: text
+        value: ""
   auth: inherit
 
 settings:
