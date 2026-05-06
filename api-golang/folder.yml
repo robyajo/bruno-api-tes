@@ -1,0 +1,7 @@
+info:
+  name: api-golang
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

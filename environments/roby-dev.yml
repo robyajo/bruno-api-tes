@@ -1,0 +1,4 @@
+name: roby-dev
+variables:
+  - name: url_roby_dev
+    value: http://localhost:8000
