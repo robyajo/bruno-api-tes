@@ -9,6 +9,12 @@ http:
   headers:
     - name: Accept
       value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: email
+        type: text
+        value: ""
   auth: inherit
 
 settings:
