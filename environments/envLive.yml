@@ -1,0 +1,6 @@
+name: envLive
+variables:
+  - name: domain
+    value: http://localhost:9090
+  - name: TOKEN
+    value: ""

@@ -1,0 +1,41 @@
+info:
+  name: LOGIN
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{domain}}/api/auth/login"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: username
+        type: text
+        value: admin
+      - name: password
+        type: text
+        value: admin123
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success && data.data.token) {
+
+            bru.setEnvVar("TOKEN", data.data.token);
+
+            console.log("Token saved:", data.data.token);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

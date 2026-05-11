@@ -1,6 +1,4 @@
 name: Domain Tes Lapeh
 variables:
-  - name: url_prod
+  - name: domain
     value: https://dummy-api.lapeh.web.id
-  - name: url_dev
-    value: http://loaclhost:8000
