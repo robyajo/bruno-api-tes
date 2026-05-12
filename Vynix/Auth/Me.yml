@@ -1,0 +1,36 @@
+info:
+  name: Me
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{domain}}/v1/auth/me"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success && data.data.token) {
+
+            bru.setEnvVar("TOKEN", data.data.token);
+
+            console.log("Token saved:", data.data.token);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
