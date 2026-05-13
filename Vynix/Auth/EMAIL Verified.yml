@@ -1,7 +1,7 @@
 info:
   name: EMAIL Verified
   type: http
-  seq: 6
+  seq: 7
 
 http:
   method: GET

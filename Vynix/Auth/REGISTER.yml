@@ -1,25 +1,22 @@
 info:
-  name: LOGIN
+  name: REGISTER
   type: http
-  seq: 2
+  seq: 1
 
 http:
   method: POST
-  url: "{{domain}}/v1/auth/login"
+  url: "{{domain}}/v1/auth/register"
   headers:
     - name: Accept
       value: application/json
   body:
     type: json
     data: |-
-      // {
-      //   "email":"user@vynix.com",
-      //   "password":"password123"
-      // }
-
       {
+        "email":"robyfull.dev@gmail.com",
         "username":"roby",
-        "password":"12341234"
+        "password":"password123",
+        "confirmPassword":"password123"
       }
   auth: inherit
 
