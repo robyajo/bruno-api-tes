@@ -1,27 +1,20 @@
 info:
-  name: LOGIN
+  name: EMAIL Send Vefirfied
   type: http
-  seq: 1
+  seq: 7
 
 http:
   method: POST
-  url: "{{domain}}/v1/auth/login"
+  url: "{{domain}}/v1/auth/send-verification"
   headers:
     - name: Accept
       value: application/json
   body:
     type: json
-    data: |-
-      // {
-      //   "email":"user@vynix.com",
-      //   "password":"password123"
-      // }
-
-      {
-        "username":"admin",
-        "password":"password123"
-      }
-  auth: inherit
+    data: ""
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
 
 runtime:
   scripts:

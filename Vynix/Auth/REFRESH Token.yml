@@ -1,7 +1,7 @@
 info:
   name: REFRESH Token
   type: http
-  seq: 4
+  seq: 5
 
 http:
   method: POST
@@ -26,9 +26,17 @@ runtime:
 
         if (data.success && data.data.tokens) {
 
-            bru.setEnvVar("TOKEN", data.data.tokens.accessToken);
+            bru.setEnvVar("TOKEN", data.tokens.accessToken);
 
             console.log("Token saved:", data.data.token);
+
+        }
+
+        if (data.success && data.data.tokens) {
+
+            bru.setEnvVar("TOKEN-REFRESH", data.data.refreshToken);
+
+            console.log("Token saved:", data.data.refreshToken);
 
         }
 

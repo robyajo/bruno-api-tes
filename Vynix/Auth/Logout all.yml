@@ -1,11 +1,11 @@
 info:
-  name: Logout
+  name: Logout all
   type: http
-  seq: 4
+  seq: 3
 
 http:
   method: POST
-  url: "{{domain}}/v1/auth/logout"
+  url: "{{domain}}/v1/auth/logout-all"
   headers:
     - name: Accept
       value: application/json

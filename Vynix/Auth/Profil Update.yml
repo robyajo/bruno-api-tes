@@ -1,0 +1,62 @@
+info:
+  name: Profil Update
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{domain}}/v1/auth/profile"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: displayName
+        type: text
+        value: admin update 1
+      - name: bio
+        type: text
+        value: ""
+      - name: whatsapp
+        type: text
+        value: ""
+      - name: instagram
+        type: text
+        value: ""
+      - name: tiktok
+        type: text
+        value: ""
+      - name: youtube
+        type: text
+        value: ""
+      - name: website
+        type: text
+        value: ""
+      - name: avatar
+        type: file
+        value:
+          - /Users/roby/Downloads/ahmad-ghazy-wc-masjid1568717338-m.jpeg
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success && data.data.token) {
+
+            bru.setEnvVar("TOKEN", data.data.token);
+
+            console.log("Token saved:", data.data.token);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
