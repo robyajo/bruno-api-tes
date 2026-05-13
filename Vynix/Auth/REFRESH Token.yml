@@ -1,0 +1,39 @@
+info:
+  name: REFRESH Token
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{domain}}/v1/auth/refresh"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      
+      {
+        "refreshToken":"{{TOKEN-REFRESH}}"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success && data.data.tokens) {
+
+            bru.setEnvVar("TOKEN", data.data.tokens.accessToken);
+
+            console.log("Token saved:", data.data.token);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

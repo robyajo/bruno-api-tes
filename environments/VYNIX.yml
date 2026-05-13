@@ -4,3 +4,5 @@ variables:
     value: http://localhost:3000/api
   - name: TOKEN
     value: ""
+  - name: TOKEN-REFRESH
+    value: ""

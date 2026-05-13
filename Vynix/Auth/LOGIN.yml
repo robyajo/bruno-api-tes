@@ -12,8 +12,13 @@ http:
   body:
     type: json
     data: |-
+      // {
+      //   "email":"user@vynix.com",
+      //   "password":"password123"
+      // }
+
       {
-        "email":"user@vynix.com",
+        "email":"admin@vynix.com",
         "password":"password123"
       }
   auth: inherit
@@ -28,7 +33,15 @@ runtime:
 
             bru.setEnvVar("TOKEN", data.data.tokens.accessToken);
 
-            console.log("Token saved:", data.data.token);
+            console.log("Token saved:", data.data.tokens.accessToken);
+
+        }
+
+        if (data.success && data.data.tokens) {
+
+            bru.setEnvVar("TOKEN-REFRESH", data.data.tokens.refreshToken);
+
+            console.log("Token saved:", data.data.tokens.refreshToken);
 
         }
 
