@@ -1,7 +1,7 @@
 info:
   name: LOGIN
   type: http
-  seq: 2
+  seq: 1
 
 http:
   method: POST
@@ -11,16 +11,17 @@ http:
       value: application/json
   body:
     type: json
-    data: |-
+    data: |+
       {
         "username":"admin",
         "password":"password123"
       }
 
       // {
-      //   "username":"roby",
-      //   "password":"12341234"
+      //   "username":"john_streamer",
+      //   "password":"password123"
       // }
+
   auth: inherit
 
 runtime:
