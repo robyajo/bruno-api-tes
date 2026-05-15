@@ -1,7 +1,7 @@
 info:
   name: REFRESH Token
   type: http
-  seq: 6
+  seq: 4
 
 http:
   method: POST
@@ -14,9 +14,11 @@ http:
     data: |-
       
       {
-        "refreshToken":"{{TOKEN-REFRESH}}"
+        "refreshToken":"{{TOKEN}}"
       }
-  auth: inherit
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
 
 runtime:
   scripts:
@@ -24,19 +26,11 @@ runtime:
       code: |-
         const data = res.getBody();
 
-        if (data.success && data.data.tokens) {
+        if (data.success && data.data.accessToken) {
 
-            bru.setEnvVar("TOKEN", data.tokens.accessToken);
+            bru.setEnvVar("TOKEN", data.data.accessToken);
 
-            console.log("Token saved:", data.data.token);
-
-        }
-
-        if (data.success && data.data.tokens) {
-
-            bru.setEnvVar("TOKEN-REFRESH", data.data.refreshToken);
-
-            console.log("Token saved:", data.data.refreshToken);
+            console.log("Token saved:", data.data.accessToken);
 
         }
 

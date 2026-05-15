@@ -1,7 +1,7 @@
 info:
   name: Logout
   type: http
-  seq: 5
+  seq: 6
 
 http:
   method: POST
@@ -14,20 +14,6 @@ http:
   auth:
     type: bearer
     token: "{{TOKEN}}"
-
-runtime:
-  scripts:
-    - type: after-response
-      code: |-
-        const data = res.getBody();
-
-        if (data.success && data.data.token) {
-
-            bru.setEnvVar("TOKEN", data.data.token);
-
-            console.log("Token saved:", data.data.token);
-
-        }
 
 settings:
   encodeUrl: true

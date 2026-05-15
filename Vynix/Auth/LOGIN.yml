@@ -13,8 +13,8 @@ http:
     type: json
     data: |-
       {
-        "username":"admin",
-        "password":"password123"
+        "login":"admin",
+        "password":"Password123"
       }
 
       // {
@@ -29,19 +29,11 @@ runtime:
       code: |-
         const data = res.getBody();
 
-        if (data.success && data.data.tokens) {
+        if (data.success && data.data.accessToken) {
 
-            bru.setEnvVar("TOKEN", data.data.tokens.accessToken);
+            bru.setEnvVar("TOKEN", data.data.accessToken);
 
-            console.log("Token saved:", data.data.tokens.accessToken);
-
-        }
-
-        if (data.success && data.data.tokens) {
-
-            bru.setEnvVar("TOKEN-REFRESH", data.data.tokens.refreshToken);
-
-            console.log("Token saved:", data.data.tokens.refreshToken);
+            console.log("Token saved:", data.data.accessToken);
 
         }
 

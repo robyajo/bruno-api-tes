@@ -13,10 +13,11 @@ http:
     type: json
     data: |-
       {
-        "email":"robyfull.dev@gmail.com",
-        "username":"roby",
+        "email":"rosdbsyfusll.dev@gmail.com",
+        "name":"rosdys",
+        "username":"rbsyds",
         "password":"password123",
-        "confirmPassword":"password123"
+        "password_confirmation":"password123"
       }
   auth: inherit
 
@@ -26,19 +27,11 @@ runtime:
       code: |-
         const data = res.getBody();
 
-        if (data.success && data.data.tokens) {
+        if (data.success && data.data.accessToken) {
 
-            bru.setEnvVar("TOKEN", data.data.tokens.accessToken);
+            bru.setEnvVar("TOKEN", data.data.accessToken);
 
-            console.log("Token saved:", data.data.tokens.accessToken);
-
-        }
-
-        if (data.success && data.data.tokens) {
-
-            bru.setEnvVar("TOKEN-REFRESH", data.data.tokens.refreshToken);
-
-            console.log("Token saved:", data.data.tokens.refreshToken);
+            console.log("Token saved:", data.data.accessToken);
 
         }
 
