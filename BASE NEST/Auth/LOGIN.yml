@@ -1,0 +1,44 @@
+info:
+  name: LOGIN
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{domain}}/v1/auth/login"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "username":"admin",
+        "password":"password123"
+      }
+
+      // {
+      //   "username":"roby",
+      //   "password":"12341234"
+      // }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success && data.data.accessToken) {
+
+            bru.setEnvVar("TOKEN", data.data.accessToken);
+
+            console.log("Token saved:", data.data.accessToken);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
