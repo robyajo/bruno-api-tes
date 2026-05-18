@@ -1,0 +1,21 @@
+info:
+  name: Get CCTV
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: https://pekadev.pekanbaru.go.id/api/get_cctv_publik
+  body:
+    type: multipart-form
+    data:
+      - name: key
+        type: text
+        value: KominfoCCTV
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
