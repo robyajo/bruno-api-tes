@@ -1,0 +1,8 @@
+name: PATUIH ENV
+variables:
+  - name: domain
+    value: http://localhost:8000/api
+  - name: TOKEN
+    value: ""
+  - name: TOKEN-REFRESH
+    value: ""

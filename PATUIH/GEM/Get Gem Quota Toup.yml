@@ -1,0 +1,17 @@
+info:
+  name: Get Gem Quota Toup
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{domain}}/v1/billing/gems/topup"
+  auth:
+    type: bearer
+    token: "{{TOKEN}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
