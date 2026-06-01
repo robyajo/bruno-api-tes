@@ -1,0 +1,8 @@
+name: PATUIH DEPLOY
+variables:
+  - name: domain
+    value: https://patuih-services.lapeh.web.id/api
+  - name: TOKEN-REFRESH
+    value: ""
+  - name: TOKEN
+    value: ""
