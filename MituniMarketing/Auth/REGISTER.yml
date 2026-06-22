@@ -1,11 +1,11 @@
 info:
-  name: LOGIN
+  name: REGISTER
   type: http
-  seq: 2
+  seq: 1
 
 http:
   method: POST
-  url: "{{domain}}/v1/auth/login"
+  url: "{{domain}}/v1/register"
   headers:
     - name: Accept
       value: application/json
@@ -13,14 +13,11 @@ http:
     type: json
     data: |-
       {
-        "login":"admin",
-        "password":"Password123"
+        "email":"rosdbsyfusll.dev@gmail.com",
+        "name":"rosdys",
+        "password":"",
+        "password_confirmation":"password123"
       }
-
-      // {
-      //   "username":"roby",
-      //   "password":"12341234"
-      // }
   auth: inherit
 
 runtime:

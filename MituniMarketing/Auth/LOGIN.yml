@@ -1,0 +1,44 @@
+info:
+  name: LOGIN
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{domain}}/v1/login"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "email":"roby@mituni.id",
+        "password":"Password123"
+      }
+
+      // {
+      //   "username":"roby",
+      //   "password":"12341234"
+      // }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success=true && data.data.token) {
+
+            bru.setEnvVar("TOKEN", data.data.token);
+
+            console.log("Token saved:", data.data.token);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
