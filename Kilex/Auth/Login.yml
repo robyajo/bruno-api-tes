@@ -7,14 +7,26 @@ http:
   method: POST
   url: "{{domain}}/v1/login"
   body:
-    type: multipart-form
-    data:
-      - name: email
-        type: text
-        value: roby@mituni.id
-      - name: password
-        type: text
-        value: Password123
+    type: json
+    data: |-
+      // Su
+      {
+        "email":"robyfull.dev@gmail.com",
+        "password":"Password123"
+      }
+      // Admin
+
+      // {
+      //   "email":"roby@mituni.id",
+      //   "password":"Password123"
+      // }
+
+      // User
+
+      // {
+      //   "email":"user@mituni.id",
+      //   "password":"Password123"
+      // }
   auth: inherit
 
 runtime:
