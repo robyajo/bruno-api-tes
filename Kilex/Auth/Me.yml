@@ -8,7 +8,7 @@ http:
   url: "{{domain}}/v1/me"
   auth:
     type: bearer
-    token: "{{token}}"
+    token: "{{tokens}}"
 
 settings:
   encodeUrl: true

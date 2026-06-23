@@ -11,7 +11,7 @@ http:
     data: |-
       // Su
       {
-        "email":"robyfull.dev@gmail.com",
+        "username":"robyfull.dev",
         "password":"Password123"
       }
       // Admin
@@ -35,11 +35,18 @@ runtime:
       code: |-
         const data = res.getBody();
 
-        if (data.success && data.data.token) {
+        if (data.success && data.data.tokens) {
 
-            bru.setEnvVar("token", data.data.token);
+            bru.setEnvVar("tokens", data.data.tokens.accessToken);
 
-            console.log("Token saved:", data.data.token);
+            console.log("Token saved:", data.data.tokens.accessToken);
+
+        }
+        if (data.success && data.tokens) {
+
+            bru.setEnvVar("refresh-token", data.data.tokens.refreshToken);
+
+            console.log("Token saved:", data.data.tokens.refreshToken);
 
         }
 
