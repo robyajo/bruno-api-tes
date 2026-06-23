@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{domain}}/v1/su/activity"
+  url: "{{domain}}/v1/su/monitor/activity"
   auth:
     type: bearer
     token: "{{token}}"
