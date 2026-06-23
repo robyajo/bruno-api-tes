@@ -1,0 +1,6 @@
+name: KILEX-ENV
+variables:
+  - name: domain
+    value: http://localhost:8000/api
+  - name: tokens
+    value: ""

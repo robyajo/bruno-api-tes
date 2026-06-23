@@ -1,0 +1,38 @@
+info:
+  name: Login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{domain}}/v1/login"
+  body:
+    type: multipart-form
+    data:
+      - name: email
+        type: text
+        value: roby@mituni.id
+      - name: password
+        type: text
+        value: Password123
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success && data.data.token) {
+
+            bru.setEnvVar("token", data.data.token);
+
+            console.log("Token saved:", data.data.token);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,44 @@
+info:
+  name: Register
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{domain}}/v1/register"
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: roy
+      - name: email
+        type: text
+        value: roy@mituni.id
+      - name: password
+        type: text
+        value: Password123
+      - name: password_confirmation
+        type: text
+        value: Password123
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const data = res.getBody();
+
+        if (data.success && data.data.token) {
+
+            bru.setEnvVar("token", data.data.token);
+
+            console.log("Token saved:", data.data.token);
+
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
