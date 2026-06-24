@@ -1,0 +1,7 @@
+info:
+  name: Paling laris
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

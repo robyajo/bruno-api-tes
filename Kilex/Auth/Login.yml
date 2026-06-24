@@ -10,16 +10,18 @@ http:
     type: json
     data: |-
       // Su
-      {
-        "username":"robyfull.dev",
-        "password":"Password123"
-      }
-      // Admin
 
       // {
-      //   "email":"roby@mituni.id",
+      //   "username":"robyfull.dev",
       //   "password":"Password123"
       // }
+
+      // Admin
+
+      {
+        "username":"roby@mituni.id",
+        "password":"Password123"
+      }
 
       // User
 
